@@ -1,0 +1,22 @@
+spring:
+  application:
+    name: MSEureka
+  security:
+    user:
+      name: admin
+      password: admin123
+
+eureka:
+  instance:
+    hostname: localhost
+    perfer-ip-address: true
+    lease-renewal-interval-in-seconds: 30
+    lease-expiration-duration-in-seconds: 90
+  client:
+    register-with-eureka: false
+    fetch-registry: false
+    defaultZone: http://admin:admin123@${eureka.instance.hostname}:${server.port}/eureka
+server:
+  port: 8761
+
+

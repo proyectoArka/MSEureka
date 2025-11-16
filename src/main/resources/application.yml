@@ -5,7 +5,11 @@ spring:
     user:
       name: admin
       password: admin123
-
+  rabbitmq:
+    host: localhost
+    port: 5672
+    username: admin
+    password: admin123
 eureka:
   instance:
     hostname: localhost
@@ -18,5 +22,16 @@ eureka:
     defaultZone: http://admin:admin123@${eureka.instance.hostname}:${server.port}/eureka
 server:
   port: 8761
-
+# Actuator endpoints
+management:
+  endpoints:
+    web:
+      exposure:
+        include: busrefresh,refresh,health,info,metrics
+    base-path: /actuator
+  endpoint:
+    busrefresh:
+      enabled: true
+    health:
+      show-details: always
 

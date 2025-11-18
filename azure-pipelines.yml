@@ -26,7 +26,7 @@ steps:
       -sonar.language=java
       -sonar.java.source=21
       -sonar.java.target=21
-      -sonar.java.binaries=./build/classes
+      -sonar.java.binaries=./build/classes/java/main
 
 - task: Gradle@3
   inputs:

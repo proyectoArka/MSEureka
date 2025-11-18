@@ -20,6 +20,8 @@ steps:
     cliProjectName: 'MSEureka'
     cliSources: '.'
     extraProperties: |
+      sonar.projectKey=proyectoArka_MSEureka
+      sonar.proyectName=$(Build.Repository.Name)
       sonar.projectVersion=$(Build.BuildNumber)
       sonar.sourceEncoding=UTF-8
       sonar.language=java

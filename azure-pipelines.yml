@@ -21,14 +21,14 @@ steps:
     cliProjectName: 'MSEureka'
     cliSources: '.'
     extraProperties: 
-      sonar.projectKey=proyectoarka
-      sonar.projectName=$(Build.Repository.Name)
-      sonar.projectVersion=$(Build.BuildNumber)
-      sonar.sourceEncoding=UTF-8
-      sonar.language=java
-      sonar.java.source=21
-      sonar.java.target=21
-      sonar.java.binaries=./build/classes
+      -sonar.projectKey=proyectoarka
+      -sonar.projectName=$(Build.Repository.Name)
+      -sonar.projectVersion=$(Build.BuildNumber)
+      -sonar.sourceEncoding=UTF-8
+      -sonar.language=java
+      -sonar.java.source=21
+      -sonar.java.target=21
+      -sonar.java.binaries=./build/classes
 
 - task: Gradle@3
   inputs:

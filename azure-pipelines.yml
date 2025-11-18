@@ -8,9 +8,8 @@ trigger:
 
 pool:
   vmImage: ubuntu-latest
- 
-steps:
 
+steps:
 - task: SonarCloudPrepare@3
   inputs:
     SonarQube: 'ArkaSonarQube'
@@ -20,13 +19,14 @@ steps:
     cliProjectKey: 'proyectoArka_MSEureka'
     cliProjectName: 'MSEureka'
     cliSources: '.'
-    extraProperties: 
-      -sonar.projectVersion=$(Build.BuildNumber)
-      -sonar.sourceEncoding=UTF-8
-      -sonar.language=java
-      -sonar.java.source=21
-      -sonar.java.target=21
-      -sonar.java.binaries=build/classes/java/main
+    extraProperties: |
+      sonar.projectVersion=$(Build.BuildNumber)
+      sonar.sourceEncoding=UTF-8
+      sonar.language=java
+      sonar.java.source=21
+      sonar.java.target=21
+      sonar.java.binaries=./build/clases
+
 
 - task: Gradle@3
   inputs:

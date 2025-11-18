@@ -30,6 +30,14 @@ steps:
       !*plain.jar
     TargetFolder: '$(Build.Repository.LocalPath)/deployment/app'
 
+- task: CopyFiles@2
+  displayName: 'copy files deployment'
+  inputs:
+    SourceFolder: 'deployment/'
+    Contents: 'infrastructure/**'
+    TargetFolder: '$(Build.Repository.LocalPath)/deployment/app'
+
+
 - task: ArchiveFiles@2
   inputs:
     rootFolderOrFile: '$(Build.BinariesDirectory)'

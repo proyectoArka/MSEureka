@@ -10,25 +10,6 @@ pool:
   vmImage: ubuntu-latest
 
 steps:
-- task: SonarCloudPrepare@3
-  inputs:
-    SonarQube: 'ArkaSonarQube'
-    organization: 'proyectoarka'
-    scannerMode: 'cli'
-    configMode: 'manual'
-    cliProjectKey: 'proyectoArka_MSEureka'
-    cliProjectName: 'MSEureka'
-    cliSources: '.'
-    extraProperties: |
-      sonar.projectKey=proyectoArka_MSEureka
-      sonar.proyectName=$(Build.Repository.Name)
-      sonar.projectVersion=$(Build.BuildNumber)
-      sonar.sourceEncoding=UTF-8
-      sonar.language=java
-      sonar.java.source=21
-      sonar.java.target=21
-      sonar.java.binaries=./build/clases
-
 
 - task: Gradle@3
   inputs:
@@ -40,14 +21,6 @@ steps:
     javaHomeOption: 'JDKVersion'
     jdkVersionOption: '21'  # Replace with your JDK version
     jdkArchitectureOption: 'x64'
-
-- task: SonarQubeAnalyze@7
-  inputs:
-    jdkversion: 'JAVA_HOME'
-
-- task: SonarCloudPublish@3
-  inputs:
-    pollingTimeoutSec: '300'
 
 - task: CopyFiles@2
   inputs:

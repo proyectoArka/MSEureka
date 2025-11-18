@@ -10,6 +10,26 @@ pool:
   vmImage: ubuntu-latest
 
 steps:
+
+- task: SonarCloudPrepare@3
+  inputs:
+    SonarQube: 'ArkaSonarQube'
+    organization: 'esteban-villa'
+    scannerMode: 'cli'
+    configMode: 'manual'
+    cliProjectKey: 'proyectoarka'
+    cliProjectName: 'MSEureka'
+    cliSources: '.'
+    extraProperties: 
+      sonar.projectKey=proyectoarka
+      sonar.projectName=$(Build.Repository.Name)
+      sonar.projectVersion=$(Build.BuildNumber)
+      sonar.sourceEncoding=UTF-8
+      sonar.language=java
+      sonar.java.source=21
+      sonar.java.target=21
+      sonar.java.binaries=./build/classes
+
 - task: Gradle@3
   inputs:
     gradleWrapperFile: 'gradlew'  # Path to your Gradle wrapper
@@ -21,6 +41,13 @@ steps:
     jdkVersionOption: '21'  # Replace with your JDK version
     jdkArchitectureOption: 'x64'
 
+- task: SonarQubeAnalyze@7
+  inputs:
+    jdkversion: 'JAVA_HOME_21_X64'
+
+- task: SonarQubePublish@7
+  inputs:
+    pollingTimeoutSec: '300'
 
 - task: CopyFiles@2
   inputs:

@@ -14,10 +14,10 @@ steps:
 - task: SonarCloudPrepare@3
   inputs:
     SonarQube: 'ArkaSonarQube'
-    organization: 'esteban-villa'
+    organization: 'proyectoarka'
     scannerMode: 'cli'
     configMode: 'manual'
-    cliProjectKey: 'proyectoarka'
+    cliProjectKey: 'proyectoArka_MSEureka'
     cliProjectName: 'MSEureka'
     cliSources: '.'
     extraProperties: 

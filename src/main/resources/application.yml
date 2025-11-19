@@ -5,6 +5,11 @@ spring:
     user:
       name: admin
       password: admin123
+  rabbitmq:
+    host: localhost
+    port: 5672
+    username: admin
+    password: admin123
 eureka:
   instance:
     hostname: localhost
